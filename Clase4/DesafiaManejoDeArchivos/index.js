@@ -3,7 +3,7 @@ const p = new Contenedor([])
 
 //guardar producto
 p.save({
-    'title':"said",
+    'title':"product",
     "price":100,
     "thumbnail":"https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png"
 })

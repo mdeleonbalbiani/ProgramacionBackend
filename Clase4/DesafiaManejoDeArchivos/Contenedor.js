@@ -11,7 +11,7 @@ class Contenedor {
             fs.writeFileSync('productos.txt', JSON.stringify(data,null,4))
             return producto.id
         } catch (error) {
-            throw new Error('No se pudo guardar el producto')
+            console.log(error);
         }
         
     }
@@ -24,7 +24,7 @@ class Contenedor {
             const data = fs.readFileSync('productos.txt', 'utf-8')
             return JSON.parse(data)
         } catch (error) {
-            throw new Error('No se pudo leer el archivo')
+            console.log(error);
         }   
     }
     deleteById(id) {
@@ -33,7 +33,7 @@ class Contenedor {
         try{
             fs.writeFileSync('productos.txt', JSON.stringify(deleted,null,4))
         }catch(error){
-            throw new Error('No se pudo eliminar el producto')
+            console.log(error);
         }
     }
     deleteAll(){
@@ -41,7 +41,7 @@ class Contenedor {
         try{
         fs.writeFileSync('productos.txt', JSON.stringify(data,null,4))    
         }catch(error){
-            throw new Error('No se pudo eliminar el producto')
+            console.log(error);
         }
     }
 }
