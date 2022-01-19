@@ -1,0 +1,20 @@
+[
+    {
+        "title": "auto",
+        "price": 100,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+        "id": 1
+    },
+    {
+        "title": "camioneta",
+        "price": 100,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+        "id": 2
+    },
+    {
+        "title": "camion",
+        "price": 100,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+        "id": 3
+    }
+]
