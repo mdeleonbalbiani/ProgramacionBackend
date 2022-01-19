@@ -7,6 +7,10 @@ const p = new Contenedor()
 
 const PORT = 8080
 
+app.get('/', (req, res) => {
+    res.send(`<h1>Bienvenidos al servidor Express del Desafio de la clase 6</h1>`)
+  })
+
 app.get('/productos',(req,res) => {
     res.json({
         productos:p.getAll()
