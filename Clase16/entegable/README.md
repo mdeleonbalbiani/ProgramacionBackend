@@ -2,7 +2,7 @@
 
 Primero se debe crear la carpeta public donde estara el archivo script por el lado del cliente, y se enlaza  con la etiqueta ```<script ></script>``` 
 
-![Texto alternativo](imagenesCode\main.hbs.png "Título alternativo")
+![Texto alternativo](https://github.com/mdeleonbalbiani/ProgramacionBackend/blob/main/Clase16/entegable/imagenesCode/main.hbs.png)
 
 y por el lado del servidos 
 
