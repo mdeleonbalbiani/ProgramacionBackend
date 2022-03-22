@@ -1,20 +1,29 @@
-# Desafio 11 - USANDO EL OBJETO PROCESS
-Incorporar un mecanismo sencillo que permite loguear un 
-cliente por su nombre mediante un formulario de ingreso
+# MOCKS Y NORMALIZACIÓN
 ## Consigna
-1. Sobre el proyecto del último desafío entregable, mover todas las claves y credenciales utilizadas a un archivo .env, y cargarlo mediante la librería dotenv. La única configuración que no va a ser manejada con esta librería va a ser el puerto de escucha del servidor. Éste deberá ser leído de los argumento pasados por línea de comando, usando alguna librería (minimist o yargs). En el caso de no pasar este parámetro por línea de comandos, conectar por defecto al puerto 8080.
-2. Agregar una ruta '/info' que presente en una vista sencilla los siguientes datos:
-- Argumentos de entrada                                       
-- Path de ejecución
-- Nombre de la plataforma (sistema operativo)       
-- Process id
-- Versión de node.js                                               
-- Carpeta del proyecto
-- Memoria total reservada (rss)
-3. Agregar otra ruta '/randoms' que permita calcular un cantidad de números aleatorios en el rango del 1 al 1000 especificada por parámetros de consulta (query).
-Por ej: /randoms?cant=20000.
-Si dicho parámetro no se ingresa, calcular 100.000.000 números.
-El dato devuelto al frontend será un objeto que contendrá como claves los números random generados junto a la cantidad de veces que salió cada uno. Esta ruta no será bloqueante (utilizar el método fork de child process). Comprobar el no bloqueo con una cantidad de 500.000.000 de randoms.
+1. Sobre el desafío entregable de la clase 16, crear una vista en forma de tabla que consuma desde la ruta ‘/api/productos-test’ del servidor una lista con 5 productos generados al azar utilizando Faker.js como generador de información aleatoria de test (en lugar de tomarse desde la base de datos). Elegir apropiadamente los temas para conformar el objeto ‘producto’ (nombre, precio y foto).
+2. Ahora, vamos a reformar el formato de los mensajes y la forma de comunicación del chat (centro de mensajes).
+El nuevo formato de mensaje será:
+    { 
+        author: {
+            id: 'mail del usuario', 
+            nombre: 'nombre del usuario', 
+            apellido: 'apellido del usuario', 
+            edad: 'edad del usuario', 
+            alias: 'alias del usuario',
+            avatar: 'url avatar (foto, logo) del usuario'
+        },
+        text: 'mensaje del usuario'
+    }
+## Aspectos a incluir en el entregable: 
+1. Modificar la persistencia de los mensajes para que utilicen un contenedor que permita guardar objetos anidados (archivos, mongodb, firebase).
+2. El mensaje se envía del frontend hacia el backend, el cual lo almacenará en la base de datos elegida. Luego cuando el cliente se conecte o envie un mensaje, recibirá un array de mensajes a representar en su vista. 
+3. El array que se devuelve debe estar normalizado con normalizr, conteniendo una entidad de autores. Considerar que el array tiene sus autores con su correspondiente id (mail del usuario), pero necesita incluir para el proceso de normalización un id para todo el array en su conjunto (podemos asignarle nosotros un valor fijo).
+Ejemplo: { id: ‘mensajes’, mensajes: [ ] }
+4. El frontend debería poseer el mismo esquema de normalización que el backend, para que este pueda desnormalizar y presentar la información adecuada en la vista.
+5. Considerar que se puede cambiar el nombre del id que usa normalizr, agregando un tercer parametro a la función schema.Entity, por ejemplo:
+    const schemaAuthor = new schema.Entity('author',{...},{idAttribute: 'email'});
+En este schema cambia el nombre del id con que se normaliza el nombre de los autores a 'email'..  
+6. Presentar en el frontend (a modo de test) el porcentaje de compresión de los mensajes recibidos. Puede ser en el título del centro de mensajes.
 
 ## Rutas
 | Método | Endpoint                | Descripción                                                                                                                                                                                                                 |
@@ -25,5 +34,3 @@ El dato devuelto al frontend será un objeto que contendrá como claves los núm
 | POST   | **/productos**     | Para incorporar productos al listado                                                                                                                                                                                        |
 | GET    | **/productos-test** | Devuelve un listado de 5 productos mock generados con **Faker.js**                                                                                                                                                          |
 | GET    | **/chat**        | Devuelve un chat desarrolado con socket que muestra la data desnormalizada y es almacenada normalizada en un archivo tipo JSON |
-| GET    | **/info**        | Muestra información relativa a la app |
-| GET    | **/randoms**        | Devuelve una cantidad de números aleatorios en el rango del 1 al 1000 especificada por parámetros de consulta (query). Por ej: `/api/randoms?cant=20000`. Si dicho parámetro no se ingresa, calcula 100.000.000 de números. |
