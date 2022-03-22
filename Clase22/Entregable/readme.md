@@ -1,4 +1,5 @@
 # MOCKS Y NORMALIZACIÓN
+
 ## Consigna
 1. Sobre el desafío entregable de la clase 16, crear una vista en forma de tabla que consuma desde la ruta ‘/api/productos-test’ del servidor una lista con 5 productos generados al azar utilizando Faker.js como generador de información aleatoria de test (en lugar de tomarse desde la base de datos). Elegir apropiadamente los temas para conformar el objeto ‘producto’ (nombre, precio y foto).
 2. Ahora, vamos a reformar el formato de los mensajes y la forma de comunicación del chat (centro de mensajes).
@@ -14,6 +15,7 @@ El nuevo formato de mensaje será:
         },
         text: 'mensaje del usuario'
     }
+
 ## Aspectos a incluir en el entregable: 
 1. Modificar la persistencia de los mensajes para que utilicen un contenedor que permita guardar objetos anidados (archivos, mongodb, firebase).
 2. El mensaje se envía del frontend hacia el backend, el cual lo almacenará en la base de datos elegida. Luego cuando el cliente se conecte o envie un mensaje, recibirá un array de mensajes a representar en su vista. 
