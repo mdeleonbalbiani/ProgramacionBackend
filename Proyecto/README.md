@@ -1,5 +1,3 @@
-## Primera entrega
-
 ### Uso de rutas
 
 - [x] Ruta base **'/api/productos'** Implementará cuatro funcionalidades 
